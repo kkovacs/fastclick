@@ -156,6 +156,7 @@ bool FromDPDKDevice::run_task(Task * t)
             rte_pktmbuf_free(pkts[i]);
 #endif
             p->set_packet_type_anno(Packet::HOST);
+            p->set_mac_header(p->data());
             if (_set_rss_aggregate)
 #if RTE_VERSION > RTE_VERSION_NUM(1,7,0,0)
                 SET_AGGREGATE_ANNO(p,pkts[i]->hash.rss);
